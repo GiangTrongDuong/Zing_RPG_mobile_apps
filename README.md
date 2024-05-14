@@ -1,16 +1,12 @@
-# flutter_rpg
+# Zing_flutter_rpg
 
-A new Flutter project.
+Welcome to the Zing Flutter RPG project! This is a role-playing game developed using Flutter, created by Giang Trong Duong as part of learning and mastering Flutter development. This README file will guide you through the project's setup, structure, and functionality.
 
-## Getting Started
+1. Table of Contents
+2. Introduction
+3. Features
+4. Installation
+5. Usage
+6. Project Structure
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
