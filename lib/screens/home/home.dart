@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/screens/home/character_card.dart';
 import 'package:flutter_rpg/shared/style_button.dart';
 import 'package:flutter_rpg/shared/style_text.dart';
@@ -13,10 +14,8 @@ class Home extends StatefulWidget {
 
 class _homeState extends State<Home> {
 
-  List characters = ['zing','duch','adam','wibu','halo','long','phucbo',
-  'sora', 'VLong', 'In', 'kinkit', 'Jason', 'M4cklor', 'Laanh'];
-
-
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
