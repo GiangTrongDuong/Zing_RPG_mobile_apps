@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/create/vocation_card.dart';
+import 'package:flutter_rpg/screens/home/home.dart';
 import 'package:flutter_rpg/shared/style_button.dart';
 import 'package:flutter_rpg/shared/style_text.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uuid/uuid.dart';
+
+var uuid = const Uuid();
 
 class Create extends StatefulWidget {
   const Create({super.key});
@@ -25,21 +30,34 @@ class _CreateState extends State<Create> {
     _sloganController.dispose();// TODO: implement dispose
     super.dispose();
   }
+  // handling vocation selection
+  Vocation selectedVocation = Vocation.corporate;
 
+  void updateVocation(Vocation vocation){
+    setState(() {
+      selectedVocation = vocation;
+    });
+  }
   //submit handler
   void handleSubmit(){
     if (_nameController.text.trim().isEmpty) {
-      print('name must not be empty');
+      //show error dialog
       return;
     }
 
     if (_sloganController.text.trim().isEmpty) {
-      print('slogan must not be empty');
+      //show error dialog
       return;
     }
+    characters.add(Character(
+      name: _nameController.text.trim(), 
+      slogan: _sloganController.text.trim(), 
+      id: uuid.v4(), 
+      vocation: selectedVocation
+      ));
 
-    print(_nameController.text);
-    print(_sloganController.text);
+      Navigator.push(context, MaterialPageRoute(
+        builder: (ctx) => const Home()));
   }
 
   @override
@@ -102,19 +120,38 @@ class _CreateState extends State<Create> {
               ),
               const SizedBox(height: 30,),
               // vocation card
-              const VocationCard(
+              VocationCard(
+                selected: selectedVocation == Vocation.corporate,
+                onTap: updateVocation,
                 vocation: Vocation.corporate 
                 ),
-                const VocationCard(
+              VocationCard(
+                selected: selectedVocation == Vocation.cowboy,
+                onTap: updateVocation,
                 vocation: Vocation.cowboy
                 ),
-                const VocationCard(
+                VocationCard(
+                selected: selectedVocation == Vocation.helldiver,
+                onTap: updateVocation,
                 vocation: Vocation.helldiver
                 ),
-                const VocationCard(
+                VocationCard(
+                selected: selectedVocation == Vocation.police,
+                onTap: updateVocation,
                 vocation: Vocation.police
                 ),
-          
+              //Good luck message
+              Center(
+                child: Icon(Icons.code, color: AppColors.primaryColor,),
+              ),
+              const Center(
+                child: StyledHeading('Good luck traveling!'),
+              ),
+              const Center(
+                child: StyledText('May Thy Journey Shilling!'),
+              ),
+              const SizedBox(height: 30,),
+
               Center(
                 child: StyledButton(
                   onPressed: handleSubmit, 
